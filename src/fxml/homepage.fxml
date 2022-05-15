@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="903.0" prefWidth="1309.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toolmaintenance.MaintenancetoolController">
+   <children>
+      <TabPane layoutY="36.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="863.0" prefWidth="1309.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <tabs>
+          <Tab text="OVERVIEW">
+               <content>
+                  <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="815.0" prefWidth="1307.0">
+                           <children>
+                              <ComboBox layoutX="69.0" layoutY="24.0" prefHeight="20.0" prefWidth="242.0" />
+                              <ComboBox layoutX="826.0" layoutY="22.0" prefHeight="20.0" prefWidth="242.0" />
+                              <ComboBox layoutX="422.0" layoutY="22.0" prefHeight="20.0" prefWidth="242.0" />
+                              <Text layoutX="26.0" layoutY="47.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="351.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="699.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <TextField layoutX="26.0" layoutY="68.0" prefHeight="31.0" prefWidth="1044.0" promptText="key words" />
+                              <Button fx:id="searchbtn" layoutX="1090.0" layoutY="68.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="203.0" text="Search" />
+                              <TableView layoutY="115.0" prefHeight="605.0" prefWidth="1309.0">
+                                 <columns>
+                                    <TableColumn prefWidth="172.99996948242188" resizable="false" text="Line" />
+                                    <TableColumn prefWidth="209.0" resizable="false" text="Machine" />
+                                    <TableColumn prefWidth="245.0" resizable="false" text="HMI Error" />
+                                    <TableColumn prefWidth="498.0" resizable="false" text="Problem description" />
+                                    <TableColumn prefWidth="181.0" resizable="false" text="Number of incidents" />
+                                 </columns>
+                              </TableView>
+                              <Button fx:id="btnnewinexpb" layoutX="299.0" layoutY="732.0" mnemonicParsing="false" onAction="#newinforexpb" prefHeight="25.0" prefWidth="292.0" text="New incident from an existing problem" />
+                              <Button fx:id="newincfornewproblem" layoutX="26.0" layoutY="732.0" mnemonicParsing="false" onAction="#newinfornewpb" prefHeight="25.0" prefWidth="257.0" text="New incident for a new problem" />
+                              <Button fx:id="btnincidentoverview" layoutX="1036.0" layoutY="732.0" mnemonicParsing="false" onAction="#incidentoverview" prefHeight="25.0" prefWidth="257.0" text="Incidents overview" />
+                              <ImageView fx:id="searchicon" fitHeight="23.0" fitWidth="21.0" layoutX="1217.0" layoutY="73.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@searchicon.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="23.0" fitWidth="21.0" layoutX="-45.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@searchicon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </ScrollPane>
+               </content>
+          </Tab>
+          <Tab text="ADMIN">
+               <content>
+                  <TabPane prefHeight="861.0" prefWidth="1309.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Problem History">
+                           <content>
+                              <ScrollPane prefHeight="774.0" prefWidth="1309.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="761.0" prefWidth="1299.0">
+                                       <children>
+                                          <TableView layoutX="4.0" layoutY="142.0" prefHeight="617.0" prefWidth="1299.0">
+                                             <columns>
+                                                <TableColumn prefWidth="114.0" text="Line" />
+                                                <TableColumn prefWidth="121.0" text="Machine" />
+                                                <TableColumn prefWidth="123.0" text="Date" />
+                                                <TableColumn prefWidth="77.0" text="HMI Error" />
+                                                <TableColumn prefWidth="157.0" text="Order notification" />
+                                                <TableColumn prefWidth="169.0" text="User Technician" />
+                                                <TableColumn prefWidth="172.0" text="Engineer" />
+                                                <TableColumn prefWidth="69.0" text="Issue" />
+                                                <TableColumn prefWidth="90.0" text="Comments" />
+                                                <TableColumn prefWidth="54.0" text="File" />
+                                                <TableColumn prefWidth="152.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                          <ComboBox layoutX="830.0" layoutY="8.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <ComboBox layoutX="182.0" layoutY="59.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <ComboBox layoutX="70.0" layoutY="10.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <TextField layoutX="35.0" layoutY="98.0" prefHeight="31.0" prefWidth="778.0" promptText="key words" />
+                                          <Text layoutX="35.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <ComboBox layoutX="424.0" layoutY="10.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <Button fx:id="searchbtnprbhistory" layoutX="830.0" layoutY="98.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="243.0" text="Search" />
+                                          <Text layoutX="35.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="357.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="721.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="440.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField layoutX="495.0" layoutY="59.0" prefHeight="31.0" prefWidth="317.0" />
+                                          <ImageView fx:id="searchiconprbhistory" fitHeight="23.0" fitWidth="21.0" layoutX="976.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@searchicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                      </Tab>
+                      <Tab onSelectionChanged="#search_if_structure" text="IF Structure">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="765.0" prefWidth="1298.0">
+                                       <children>
+                                          <TableView fx:id="table_if_structure" layoutY="141.0" onMouseClicked="#getSelectedIfStruct" prefHeight="448.0" prefWidth="1305.0">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_if" prefWidth="440.0000305175781" text="Name" />
+                                                <TableColumn fx:id="col_desc_if" prefWidth="386.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_if" prefWidth="478.0" text="Cost center" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="add_btn_if_struct" layoutX="14.0" layoutY="645.0" mnemonicParsing="false" onAction="#add_if_structure" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                          <Button fx:id="edit_btn_if_struct" layoutX="167.0" layoutY="645.0" mnemonicParsing="false" onAction="#edit_if_structure" prefHeight="31.0" prefWidth="142.0" text="Edit" textAlignment="RIGHT" />
+                                          <Button fx:id="deletebtnif" layoutX="318.0" layoutY="645.0" mnemonicParsing="false" onAction="#delete_if_structure" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <ImageView fx:id="editiconif" fitHeight="23.0" fitWidth="21.0" layoutX="254.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteiconif" fitHeight="23.0" fitWidth="21.0" layoutX="414.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="addiconif" fitHeight="23.0" fitWidth="21.0" layoutX="101.0" layoutY="650.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@addicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                      </Tab>
+                        <Tab text="Line Structure">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="768.0" prefWidth="1301.0">
+                                       <children>
+                                          <TableView fx:id="table_line_structure" layoutX="-3.0" layoutY="69.0" prefHeight="619.0" prefWidth="1307.0">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_line" prefWidth="299.0" text="Name" />
+                                                <TableColumn fx:id="col_desc_line" prefWidth="660.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_line" prefWidth="347.0" text="Cost center" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="addbtn_line" layoutX="14.0" layoutY="706.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                          <Button fx:id="editbtn_line" layoutX="167.0" layoutY="706.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                          <Button fx:id="deletebtn_line" layoutX="325.0" layoutY="706.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <ComboBox layoutX="46.0" layoutY="25.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <Text layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <ImageView fx:id="addiconline" fitHeight="23.0" fitWidth="21.0" layoutX="100.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@addicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="editiconline" fitHeight="23.0" fitWidth="21.0" layoutX="251.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteiconline" fitHeight="23.0" fitWidth="21.0" layoutX="416.0" layoutY="711.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Machine Structure">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="771.0" prefWidth="1301.0">
+                                       <children>
+                                          <TextField fx:id="search_field_machine_structure" layoutX="-2.0" layoutY="129.0" prefHeight="26.0" prefWidth="608.0" promptText="key words" />
+                                          <TableView fx:id="table_machine_structure" layoutX="-2.0" layoutY="108.0" prefHeight="572.0" prefWidth="1305.0">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_machine" prefWidth="323.0000305175781" text="Name" />
+                                                <TableColumn fx:id="col_desc_machine" prefWidth="346.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_machine_structure" prefWidth="321.0" text="Cost center" />
+                                                <TableColumn fx:id="col_invnr_machine" prefWidth="313.0" text="Machine Inventory Number" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="addbtn_machine" layoutX="14.0" layoutY="702.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                          <Button fx:id="editbtnmachine" layoutX="172.0" layoutY="702.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                          <Button fx:id="deletemachine" layoutX="325.0" layoutY="702.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <ComboBox fx:id="comboif" layoutX="396.0" layoutY="16.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <ComboBox fx:id="comboline" layoutX="60.0" layoutY="17.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <Button fx:id="search_button_machine" layoutX="651.0" layoutY="62.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="292.0" text="Search" />
+                                          <Text layoutX="23.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="340.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <TextField fx:id="search_field_machine_structure1" layoutX="23.0" layoutY="62.0" prefHeight="31.0" prefWidth="614.0" promptText="key words" />
+                                          <ImageView fx:id="addiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="100.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@addicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="editiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="256.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="414.0" layoutY="707.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="searchiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="823.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@searchicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Technicians">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="764.0" prefWidth="1295.0">
+                                       <children>
+                                          <TableView fx:id="table_shift_team" layoutY="43.0" prefHeight="543.0" prefWidth="1305.0">
+                                             <columns>
+                                                <TableColumn fx:id="colu_numeteh_shifteam" prefWidth="344.0" text="Technician Name" />
+                                                <TableColumn fx:id="col_job_desc" prefWidth="362.0" text="Job description" />
+                                                <TableColumn prefWidth="278.0" text="Username" />
+                                                <TableColumn prefWidth="320.0" text="Email" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="add_button_shiftteam" layoutX="8.0" layoutY="620.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                          <Button fx:id="edit_btn_shiftteam" layoutX="161.0" layoutY="620.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                          <Button fx:id="del_btnshiftteam" layoutX="317.0" layoutY="620.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <ImageView fx:id="addicontech" fitHeight="23.0" fitWidth="21.0" layoutX="97.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@addicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="editicontech" fitHeight="23.0" fitWidth="21.0" layoutX="246.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteicontech" fitHeight="23.0" fitWidth="21.0" layoutX="408.0" layoutY="625.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Engineers">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="760.0" prefWidth="1300.0">
+                                       <children>
+                                          <TableView fx:id="table_escalation_team" layoutX="-2.0" layoutY="71.0" prefHeight="586.0" prefWidth="1305.0">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_escalation_team" prefWidth="403.0" text="Engineer Name" />
+                                                <TableColumn fx:id="col_details_escalation_team" prefWidth="328.0" text="Job description" />
+                                                <TableColumn prefWidth="272.0" text="Username" />
+                                                <TableColumn prefWidth="301.0" text="Email" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="add_btn_escalation_team" layoutX="14.0" layoutY="690.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                          <Button fx:id="edit_btn_escalation_team" layoutX="175.0" layoutY="690.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                          <Button fx:id="delete_btn_escalation_team" layoutX="337.0" layoutY="690.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <ImageView fx:id="addiconesc" fitHeight="23.0" fitWidth="21.0" layoutX="100.0" layoutY="695.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@addicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="editiconesc" fitHeight="23.0" fitWidth="21.0" layoutX="260.0" layoutY="695.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteiconesc" fitHeight="23.0" fitWidth="21.0" layoutX="426.0" layoutY="695.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Spare Parts">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="764.0" prefWidth="1297.0">
+                                       <children>
+                                          <TextField layoutX="14.0" layoutY="28.0" prefHeight="31.0" prefWidth="430.0" promptText="key words" />
+                                          <TableView layoutY="83.0" prefHeight="560.0" prefWidth="1300.0">
+                                             <columns>
+                                                <TableColumn prefWidth="194.99996948242188" text="Part Number" />
+                                                <TableColumn prefWidth="251.0" text="Spare ID" />
+                                                <TableColumn prefWidth="310.0" text="Description" />
+                                                <TableColumn prefWidth="548.0" text="Details" />
+                                             </columns>
+                                          </TableView>
+                                          <Button fx:id="addbtnspare" layoutX="14.0" layoutY="670.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                          <Button fx:id="editbtnspare" layoutX="169.0" layoutY="670.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                          <Button fx:id="deletebtnspare" layoutX="324.0" layoutY="670.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <Button fx:id="searchbtnspare" layoutX="464.0" layoutY="28.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="163.0" text="Search" />
+                                          <Button layoutX="1060.0" layoutY="28.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="223.0" text="Load data" />
+                                          <ImageView fx:id="addiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="103.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@addicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="editiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="253.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="416.0" layoutY="675.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="searchiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="570.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@searchicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Access">
+                           <content>
+                              <ScrollPane prefHeight="200.0" prefWidth="200.0">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="764.0" prefWidth="1303.0">
+                                       <children>
+                                          <TableView layoutX="-5.0" layoutY="97.0" prefHeight="563.0" prefWidth="1316.0">
+                                            <columns>
+                                              <TableColumn prefWidth="653.9999694824219" text="Username" />
+                                              <TableColumn prefWidth="653.0" text="Role" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="editbtnacces" layoutX="29.0" layoutY="679.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                          <Button fx:id="deletebtnaccess" layoutX="190.0" layoutY="679.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                          <ImageView fx:id="editiconacces" fitHeight="23.0" fitWidth="21.0" layoutX="120.0" layoutY="684.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@editicon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <ImageView fx:id="deleteiconaccess" fitHeight="23.0" fitWidth="21.0" layoutX="284.0" layoutY="684.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@removeicon.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </ScrollPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

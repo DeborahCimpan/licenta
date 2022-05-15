@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane id="AnchorPane" minWidth="0.0" prefHeight="884.0" prefWidth="1299.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="toolmaintenance.MaintenancetoolController">
+    <stylesheets>
+        <URL value="@maintenancetool.css" />
+    </stylesheets>
+   <children>
+      <TabPane layoutY="47.0" prefHeight="810.0" prefWidth="1173.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+        <tabs>
+          <Tab text="OVERVIEW">
+               <content>
+                  <AnchorPane prefHeight="626.0" prefWidth="1299.0">
+                     <children>
+                        <ComboBox layoutX="40.0" layoutY="30.0" prefHeight="20.0" prefWidth="242.0" />
+                        <ComboBox layoutX="356.0" layoutY="30.0" prefHeight="20.0" prefWidth="242.0" />
+                        <ComboBox layoutX="720.0" layoutY="29.0" prefHeight="20.0" prefWidth="242.0" />
+                        <TextField layoutX="14.0" layoutY="76.0" prefHeight="27.0" prefWidth="887.0" promptText="key words" />
+                        <Button layoutX="1019.0" layoutY="96.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="274.0" text="Search" AnchorPane.rightAnchor="6.0" />
+                        <TableView layoutX="-1.0" layoutY="137.0" prefHeight="565.0" prefWidth="1306.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="-6.0">
+                          <columns>
+                            <TableColumn prefWidth="205.0" text="Line" />
+                            <TableColumn prefWidth="239.0" text="Machine" />
+                              <TableColumn prefWidth="247.0" text="HMI Error" />
+                              <TableColumn prefWidth="445.0" text="Problem description" />
+                              <TableColumn prefWidth="164.0" text="Number of incidents" />
+                          </columns>
+                        </TableView>
+                        <Text layoutX="14.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="300.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text layoutX="616.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Button fx:id="btnnewinexpb" layoutX="14.0" layoutY="717.0" mnemonicParsing="false" onAction="#newinforexpb" prefHeight="31.0" prefWidth="283.0" text="New incident from an existing problem" />
+                        <Button fx:id="newincfornewproblem" layoutX="314.0" layoutY="717.0" mnemonicParsing="false" onAction="#newinfornewpb" prefHeight="25.0" prefWidth="257.0" text="New incident for a new problem" />
+                        <Button fx:id="btnincidentoverview" layoutX="592.0" layoutY="717.0" mnemonicParsing="false" onAction="#incidentoverview" prefHeight="25.0" prefWidth="257.0" text="Incidents overview" />
+                     </children></AnchorPane>
+               </content></Tab>
+            <Tab text="ADMIN">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TabPane layoutY="-1.0" prefHeight="771.0" prefWidth="1173.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                          <tabs>
+                            <Tab text="Problem History">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="660.0" prefWidth="1299.0">
+                                       <children>
+                                          <ComboBox layoutX="52.0" layoutY="22.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <ComboBox layoutX="364.0" layoutY="20.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <ComboBox layoutX="726.0" layoutY="18.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <TextField layoutX="22.0" layoutY="109.0" prefHeight="23.0" prefWidth="836.0" promptText="key words" />
+                                          <Text layoutX="22.0" layoutY="87.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <ComboBox layoutX="173.0" layoutY="67.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <DatePicker layoutX="529.0" layoutY="67.0" prefHeight="25.0" prefWidth="327.0" />
+                                          <Button layoutX="1000.0" layoutY="142.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="292.0" text="Search" AnchorPane.rightAnchor="7.0" />
+                                          <TableView layoutY="176.0" prefHeight="586.0" prefWidth="1299.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <columns>
+                                              <TableColumn prefWidth="114.0" text="Line" />
+                                              <TableColumn prefWidth="121.0" text="Machine" />
+                                                <TableColumn prefWidth="123.0" text="Date" />
+                                                <TableColumn prefWidth="77.0" text="HMI Error" />
+                                                <TableColumn prefWidth="157.0" text="Order notification" />
+                                                <TableColumn prefWidth="169.0" text="User Technician" />
+                                                <TableColumn prefWidth="172.0" text="Engineer" />
+                                                <TableColumn prefWidth="69.0" text="Issue" />
+                                                <TableColumn prefWidth="90.0" text="Comments" />
+                                                <TableColumn prefWidth="54.0" text="File" />
+                                                <TableColumn prefWidth="152.0" text="Status" />
+                                            </columns>
+                                          </TableView>
+                                          <Text layoutX="22.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="306.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="622.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="460.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children></AnchorPane>
+                              </content>
+                            </Tab>
+                            <Tab text="IF Structure">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="732.0" prefWidth="1166.0">
+                                       <children>
+                                          <TableView fx:id="table_if_structure" layoutX="-3.0" layoutY="65.0" prefHeight="586.0" prefWidth="1305.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.0">
+                                            <columns>
+                                              <TableColumn fx:id="col_name_if" prefWidth="294.0" text="Name" />
+                                              <TableColumn fx:id="col_desc_if" prefWidth="371.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_if" prefWidth="225.0" text="Cost center" />
+                                                <TableColumn fx:id="col_loc_if" prefWidth="408.0" text="Location" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="add_btn_if_struct" layoutX="14.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Add" />
+                                          <Button fx:id="edit_btn_if_struct" layoutX="138.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Edit" />
+                                          <Button layoutX="261.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Delete" />
+                                       </children>
+                                    </AnchorPane>
+                              </content>
+                            </Tab>
+                              <Tab text="Line Structure">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="797.0" prefWidth="1299.0">
+                                       <children>
+                                          <TableView fx:id="table_line_structure" layoutY="72.0" prefHeight="599.0" prefWidth="1307.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-8.0">
+                                            <columns>
+                                              <TableColumn fx:id="col_name_line" prefWidth="299.0" text="Name" />
+                                              <TableColumn fx:id="col_desc_line" prefWidth="318.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_line" prefWidth="274.0" text="Cost center" />
+                                                <TableColumn fx:id="col_loc_line" prefWidth="415.0" text="Location" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="addbtn_line" layoutX="14.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Add" />
+                                          <Button fx:id="editbtn_line" layoutX="137.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Edit" />
+                                          <Button fx:id="deletebtn_line" layoutX="260.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Delete" />
+                                          <ComboBox layoutX="59.0" layoutY="22.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <Text layoutX="28.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="Machine Structure">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField fx:id="search_field_machine_structure" layoutX="25.0" layoutY="70.0" prefHeight="26.0" prefWidth="608.0" promptText="key words" />
+                                          <TableView fx:id="table_machine_structure" layoutX="-3.0" layoutY="120.0" prefHeight="551.0" prefWidth="1305.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.0">
+                                            <columns>
+                                              <TableColumn fx:id="col_name_machine" prefWidth="323.0000305175781" text="Name" />
+                                              <TableColumn fx:id="col_desc_machine" prefWidth="346.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_machine_structure" prefWidth="214.0" text="Cost center" />
+                                                <TableColumn fx:id="col_loc_machine" prefWidth="420.0" text="Location" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="addbtn_machine" layoutX="14.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Add" />
+                                          <Button fx:id="editbtnmachine" layoutX="138.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Edit" />
+                                          <Button fx:id="deletemachine" layoutX="262.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Delete" />
+                                          <ComboBox fx:id="comboif" layoutX="59.0" layoutY="23.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <ComboBox fx:id="comboline" layoutX="391.0" layoutY="23.0" prefHeight="20.0" prefWidth="242.0" />
+                                          <Button fx:id="search_button_machine" layoutX="993.0" layoutY="84.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="292.0" text="Search" />
+                                          <Text layoutX="25.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="329.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                             <font>
+                                                <Font size="24.0" />
+                                             </font>
+                                          </Text>
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="Technicians">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="table_shift_team" layoutX="-3.0" layoutY="62.0" prefHeight="586.0" prefWidth="1305.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-4.0">
+                                            <columns>
+                                              <TableColumn fx:id="colu_numeteh_shifteam" prefWidth="653.0" text="Technician Name" />
+                                              <TableColumn fx:id="col_job_desc" prefWidth="652.0" text="Job description" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="add_button_shiftteam" layoutX="14.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Add" />
+                                          <Button fx:id="edit_btn_shiftteam" layoutX="135.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Edit" />
+                                          <Button fx:id="del_btnshiftteam" layoutX="257.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Delete" />
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="Engineers">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TableView fx:id="table_escalation_team" layoutY="66.0" prefHeight="586.0" prefWidth="1305.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                            <columns>
+                                              <TableColumn fx:id="col_name_escalation_team" prefWidth="649.0" text="Engineer Name" />
+                                              <TableColumn fx:id="col_details_escalation_team" prefWidth="649.0" text="Job description" />
+                                            </columns>
+                                          </TableView>
+                                          <Button fx:id="add_btn_escalation_team" layoutX="14.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Add" />
+                                          <Button fx:id="edit_btn_escalation_team" layoutX="138.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Edit" />
+                                          <Button fx:id="delete_btn_escalation_team" layoutX="264.0" layoutY="697.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Delete" />
+                                       </children></AnchorPane>
+                                </content>
+                              </Tab>
+                              <Tab text="Spare Parts">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                       <children>
+                                          <TextField layoutX="14.0" layoutY="29.0" prefHeight="31.0" prefWidth="430.0" promptText="key words" />
+                                          <TableView layoutX="-3.0" layoutY="98.0" prefHeight="560.0" prefWidth="1305.0" AnchorPane.leftAnchor="-3.0" AnchorPane.rightAnchor="-3.0">
+                                            <columns>
+                                              <TableColumn prefWidth="194.99996948242188" text="Part Number" />
+                                              <TableColumn prefWidth="251.0" text="Spare ID" />
+                                                <TableColumn prefWidth="310.0" text="Description" />
+                                                <TableColumn prefWidth="548.0" text="Details" />
+                                            </columns>
+                                          </TableView>
+                                          <Button layoutX="14.0" layoutY="689.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Add" />
+                                          <Button layoutX="134.0" layoutY="689.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Edit" />
+                                          <Button layoutX="254.0" layoutY="689.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="113.0" text="Delete" />
+                                          <Button layoutX="456.0" layoutY="29.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="163.0" text="Search" />
+                                          <Button layoutX="993.0" layoutY="60.0" mnemonicParsing="false" prefHeight="24.0" prefWidth="292.0" text="Load data" />
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </Tab>
+                          </tabs>
+                        </TabPane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

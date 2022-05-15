@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fx:id="scrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="683.0" prefWidth="1302.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewIncidentNewProblemController">
+  <content>
+    <AnchorPane fx:id="anchorPane" minHeight="0.0" minWidth="0.0" onMouseClicked="#cancelSelection" prefHeight="681.0" prefWidth="1300.0">
+         <children>
+            <ComboBox fx:id="comboif" layoutX="32.0" layoutY="20.0" onAction="#actioncomboIF" prefHeight="31.0" prefWidth="246.0" />
+            <ComboBox fx:id="comboline" layoutX="361.0" layoutY="20.0" onAction="#onactionLine" prefHeight="31.0" prefWidth="327.0" />
+            <ComboBox fx:id="combomachine" layoutX="813.0" layoutY="20.0" onAction="#onMachine" prefHeight="31.0" prefWidth="477.0" />
+            <TextField fx:id="startdatefield" layoutX="124.0" layoutY="63.0" prefHeight="39.0" prefWidth="187.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="enddatefield" layoutX="445.0" layoutY="63.0" prefHeight="39.0" prefWidth="187.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <ComboBox fx:id="combostatus" layoutX="737.0" layoutY="66.0" onAction="#onStatus" prefHeight="31.0" prefWidth="152.0" />
+            <TextField fx:id="saporder" layoutX="1043.0" layoutY="63.0" prefHeight="39.0" prefWidth="248.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <Button fx:id="addsparepartsbtn" layoutX="32.0" layoutY="156.0" mnemonicParsing="false" onAction="#openaddspare" prefHeight="31.0" prefWidth="185.0" text="Add" />
+            <TextArea fx:id="sparepartstextarea" layoutX="271.0" layoutY="115.0" prefHeight="144.0" prefWidth="327.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <ComboBox fx:id="escalstatuscombo" layoutX="710.0" layoutY="129.0" onAction="#onEscal" prefHeight="31.0" prefWidth="117.0" />
+            <ComboBox fx:id="escalationcombo" layoutX="937.0" layoutY="129.0" onAction="#onSelectEscalation" prefHeight="31.0" prefWidth="351.0" />
+            <TextField fx:id="hmierror" layoutX="841.0" layoutY="194.0" prefHeight="39.0" prefWidth="450.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextArea fx:id="textareashortdesc" layoutX="11.0" layoutY="307.0" prefHeight="144.0" prefWidth="269.0" >
+			<font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <TextArea fx:id="textareadesc" layoutX="300.0" layoutY="307.0" prefHeight="144.0" prefWidth="393.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <TextArea fx:id="textareasol" layoutX="700.0" layoutY="306.0" prefHeight="144.0" prefWidth="590.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <Button fx:id="btnchoosefile" layoutX="13.0" layoutY="481.0" mnemonicParsing="false" onAction="#chooseFile" prefHeight="37.0" prefWidth="210.0" text="Choose a file" />
+            <Button fx:id="deletefilesbtn" layoutX="13.0" layoutY="549.0" mnemonicParsing="false" onAction="#deleteFiles" prefHeight="37.0" prefWidth="210.0" text="Delete selected files" />
+            <ListView fx:id="listviewfiles" layoutX="254.0" layoutY="477.0" prefHeight="113.0" prefWidth="1036.0" />
+            <Button fx:id="savebtn" layoutX="317.0" layoutY="619.0" mnemonicParsing="false" onAction="#save" prefHeight="37.0" prefWidth="257.0" text="Save" />
+            <Button fx:id="cancelbtn" layoutX="757.0" layoutY="619.0" mnemonicParsing="false" onAction="#cancel" prefHeight="37.0" prefWidth="257.0" text="Cancel" />
+            <Text layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="310.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="712.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="656.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="603.0" layoutY="153.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escalation">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="839.0" layoutY="152.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escale to">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="12.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="331.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="917.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAP Order">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="9.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part number spare parts">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="604.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HMI/Error Message">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="301.0" layoutY="297.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Problem description">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="703.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution creator">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="addiconspare" fitHeight="29.0" fitWidth="21.0" layoutX="145.0" layoutY="161.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/addicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="saveicon" fitHeight="23.0" fitWidth="21.0" layoutX="467.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/saveicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="cancelicon" fitHeight="23.0" fitWidth="21.0" layoutX="912.0" layoutY="627.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/cancelicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="iconfile" fitHeight="23.0" fitWidth="21.0" layoutX="166.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/fileicon.png" />
+               </image>
+            </ImageView>
+            <Text layoutX="10.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Short incident description">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="deleteicon" fitHeight="23.0" fitWidth="34.0" layoutX="180.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/removeicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="600.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="4.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="295.0" layoutY="272.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="5.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="7.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="326.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="707.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="304.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="645.0" layoutY="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="10.0" fitWidth="10.0" layoutX="600.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/stea.png" />
+               </image>
+            </ImageView>
+         </children></AnchorPane>
+  </content>
+</ScrollPane>

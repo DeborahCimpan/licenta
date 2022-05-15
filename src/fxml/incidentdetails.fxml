@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<ScrollPane fx:id="scrollPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="624.0" prefWidth="1233.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IncidentDetails">
+   <content>
+      <AnchorPane fx:id="anchorPane" prefHeight="620.0" prefWidth="1229.0">
+         <children>
+            <TextField fx:id="iftextfield" editable="false" layoutX="31.0" layoutY="14.0" prefHeight="39.0" prefWidth="171.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="linetextfield" editable="false" layoutX="272.0" layoutY="14.0" prefHeight="39.0" prefWidth="362.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="machinetextfield" editable="false" layoutX="751.0" layoutY="14.0" prefHeight="39.0" prefWidth="470.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="startdatefield" editable="false" layoutX="119.0" layoutY="67.0" prefHeight="39.0" prefWidth="182.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="enddatefield" editable="false" layoutX="406.0" layoutY="67.0" prefHeight="39.0" prefWidth="170.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="statusfield" editable="false" layoutX="650.0" layoutY="67.0" prefHeight="39.0" prefWidth="96.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="user" editable="false" layoutX="897.0" layoutY="67.0" prefHeight="39.0" prefWidth="324.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="sapfield" editable="false" layoutX="121.0" layoutY="121.0" prefHeight="39.0" prefWidth="165.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="escalation_user_textfield" editable="false" layoutX="472.0" layoutY="121.0" prefHeight="39.0" prefWidth="324.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextField fx:id="hmi" editable="false" layoutX="1009.0" layoutY="121.0" prefHeight="39.0" prefWidth="212.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextField>
+            <TextArea fx:id="problem_desc" editable="false" layoutX="10.0" layoutY="221.0" prefHeight="142.0" prefWidth="310.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <TextArea fx:id="spareparts" editable="false" layoutX="328.0" layoutY="221.0" prefHeight="141.0" prefWidth="258.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <TextArea fx:id="sol_creator" editable="false" layoutX="596.0" layoutY="221.0" prefHeight="141.0" prefWidth="624.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <TextArea fx:id="sol_esc" editable="false" layoutX="13.0" layoutY="397.0" prefHeight="134.0" prefWidth="1205.0">
+               <font>
+                  <Font size="18.0" />
+               </font></TextArea>
+            <Button fx:id="downloadbtn" layoutX="13.0" layoutY="539.0" mnemonicParsing="false" onAction="#downloadFiles" prefHeight="37.0" prefWidth="224.0" text="Download files" />
+            <Button fx:id="leftarrow" layoutX="553.0" layoutY="561.0" mnemonicParsing="false" onAction="#actionLeftArrow" prefHeight="31.0" prefWidth="64.0" />
+            <Button fx:id="rightarrow" layoutX="648.0" layoutY="561.0" mnemonicParsing="false" onAction="#actionRightArrow" prefHeight="31.0" prefWidth="64.0" />
+            <Button fx:id="btnnewfromtemplate" layoutX="997.0" layoutY="539.0" mnemonicParsing="false" onAction="#newincfromtemplate" prefHeight="37.0" prefWidth="221.0" text="New incident from template" />
+            <Button fx:id="savebtn" layoutX="734.0" layoutY="537.0" mnemonicParsing="false" onAction="#onSave" prefHeight="37.0" prefWidth="224.0" text="Save" />
+            <Text layoutX="10.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="216.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="644.0" layoutY="42.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="10.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="751.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creator name">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="582.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="304.0" layoutY="95.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="sap_text" layoutX="8.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAP Order">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="esc_name_text" layoutX="292.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escalation Name">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="hmi_text" layoutX="803.0" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HMI/Error Message">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="pb_desc_text" layoutX="9.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Problem description">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="part_number_text" layoutX="329.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part number spare parts">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="sol_creator_text" layoutX="595.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution creator">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="sol_escal_text" layoutX="15.0" layoutY="388.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution escalation">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="foldericon" fitHeight="23.0" fitWidth="21.0" layoutX="182.0" layoutY="548.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/foldericon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="lefticon" fitHeight="23.0" fitWidth="21.0" layoutX="572.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/left.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="righticon" fitHeight="23.0" fitWidth="21.0" layoutX="670.0" layoutY="565.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/right.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="addbtnspare" layoutX="916.0" layoutY="180.0" mnemonicParsing="false" onAction="#onOpenAddSpare" prefHeight="31.0" prefWidth="185.0" text="Add" />
+            <ImageView fx:id="addicon" fitHeight="20.0" fitWidth="46.0" layoutX="951.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/addicon.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="saveicon" fitHeight="24.0" fitWidth="26.0" layoutX="803.0" layoutY="544.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/saveicon.png" />
+               </image>
+            </ImageView>
+            <ComboBox fx:id="escal_combo" layoutX="353.0" layoutY="543.0" onAction="#onEscal" prefWidth="117.0" />
+            <ComboBox fx:id="escal_to_combo" layoutX="353.0" layoutY="580.0" onAction="#onSelectEscalation" prefWidth="150.0" />
+            <Text fx:id="escal_text" layoutX="248.0" layoutY="567.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escalation">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="escal_to_text" layoutX="254.0" layoutY="597.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escale to">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>

@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="751.0" prefWidth="1460.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tslessonslearneddatabase.MaintenanceController">
+   <center>
+      <TabPane fx:id="tabpane" prefHeight="200.0" prefWidth="1578.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab fx:id="tabOver" onSelectionChanged="#onTabOverview" text="OVERVIEW">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TableView fx:id="table_overview" onMouseClicked="#onSelectProblem" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                          <columns>
+                            <TableColumn fx:id="col_line_over" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="208.00000303983688" style="-fx-alignment: CENTER;" text="Line" />
+                            <TableColumn fx:id="col_machine_over" maxWidth="1.7976931348623157E308" minWidth="237.60000610351562" prefWidth="242.40000915527344" text="Machine" />
+                              <TableColumn fx:id="col_hmi_over" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="200.0" text="HMI/Error message" />
+                              <TableColumn fx:id="col_pb_over" maxWidth="1.7976931348623157E308" minWidth="350.4000244140625" prefWidth="351.20001220703125" text="Problem description" />
+                              <TableColumn fx:id="col_nr_incidents" maxWidth="1.7976931348623157E308" minWidth="250.0" prefWidth="260.80001220703116" text="Open / Total no. of inc." />
+                          </columns>
+                        </TableView>
+                     </center>
+                     <top>
+                        <AnchorPane onMouseClicked="#onAnchorPaneOverview" prefHeight="98.0" prefWidth="1370.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <ComboBox fx:id="comboifover" layoutX="41.0" layoutY="6.0" onAction="#onIFOverview" prefHeight="32.0" prefWidth="242.0" />
+                              <ComboBox fx:id="combolineover" layoutX="358.0" layoutY="6.0" onAction="#onLineOverview" prefHeight="32.0" prefWidth="354.0" />
+                              <ComboBox fx:id="combomachineover" layoutX="837.0" layoutY="6.0" onAction="#onMachineOverview" prefHeight="32.0" prefWidth="506.0" AnchorPane.leftAnchor="837.0000000000001" AnchorPane.rightAnchor="19.000000000000114" />
+                              <Text layoutX="14.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="298.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text layoutX="732.0" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <TextField fx:id="keywordsover" layoutX="14.0" layoutY="49.0" prefHeight="31.0" prefWidth="270.0" promptText="key words">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <Button fx:id="searchbtn" layoutX="1209.0" layoutY="49.0" mnemonicParsing="false" onAction="#onSearchOverview" prefHeight="31.0" prefWidth="232.0" text="Search" AnchorPane.leftAnchor="1209.0" AnchorPane.rightAnchor="19.0" />
+                              <ImageView fx:id="searchicon" fitHeight="23.0" fitWidth="21.0" layoutX="1284.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/searchicon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <bottom>
+                        <AnchorPane onMouseClicked="#onAnchorPaneOverview" prefHeight="85.0" prefWidth="1618.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Button fx:id="newincfornewproblem" layoutX="14.0" layoutY="27.0" mnemonicParsing="false" onAction="#newinfornewpb" prefHeight="25.0" prefWidth="257.0" text="New incident for a new problem" />
+                              <Button fx:id="btnnewinexpb" layoutX="280.0" layoutY="27.0" mnemonicParsing="false" onAction="#newinforexpb" prefHeight="25.0" prefWidth="292.0" text="New incident from an existing problem" />
+                              <ImageView fx:id="donwloadfileicon" fitHeight="18.0" fitWidth="22.0" layoutX="901.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/foldericon.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="downloadbtn" layoutX="1009.0" layoutY="27.0" mnemonicParsing="false" onAction="#downloadFile" prefHeight="25.0" prefWidth="292.0" text="Download files" AnchorPane.rightAnchor="346.20000000000005" />
+                              <Button fx:id="btnincidentoverview" layoutX="1309.0" layoutY="27.0" mnemonicParsing="false" onAction="#incidentoverview" prefHeight="25.0" prefWidth="257.0" text="Incidents overview" AnchorPane.rightAnchor="80.60000000000014" />
+                           </children>
+                        </AnchorPane>
+                     </bottom>
+                  </BorderPane>
+               </content>
+          </Tab>
+          <Tab fx:id="admintab" text="ADMIN">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <center>
+                        <TabPane fx:id="tabAdmin" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                          <tabs>
+                            <Tab onSelectionChanged="#onPbHistoryTab" text="Problem History">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_problem_history" onMouseClicked="#onSelectProblemHistory" prefHeight="370.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                            <columns>
+                                              <TableColumn fx:id="col_line_pbhistory" maxWidth="1.7976931348623157E308" minWidth="200.0" prefWidth="184.00000303983688" text="Line" />
+                                              <TableColumn fx:id="col_mach_pbhistory" maxWidth="1.7976931348623157E308" minWidth="164.00001525878906" prefWidth="164.00001525878906" text="Machine" />
+                                                <TableColumn fx:id="col_user_pbhistory" maxWidth="1.7976931348623157E308" minWidth="128.00003051757812" prefWidth="128.00003051757812" text="Username" />
+                                                <TableColumn fx:id="col_status_pbhistory" maxWidth="1.7976931348623157E308" minWidth="111.99996948242188" prefWidth="136.79995727539062" text="Status" />
+                                                <TableColumn fx:id="col_hmi_pbhistory" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="167.20001220703125" text="HMI/Error message" />
+                                                <TableColumn fx:id="col_enginner_pbhistory" maxWidth="1.7976931348623157E308" minWidth="105.60003662109375" prefWidth="186.4000244140625" text="Engineer" />
+                                                <TableColumn fx:id="col_pbdesc_pbhistory" maxWidth="1.7976931348623157E308" minWidth="183.99993896484375" prefWidth="198.40008544921875" text="Problem description" />
+                                                <TableColumn fx:id="col_file_pbhistory" maxWidth="1.7976931348623157E308" minWidth="28.7998046875" prefWidth="55.199951171875" text="File" />
+                                                <TableColumn fx:id="col_nrincidents_pbhistory" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="223.2000732421875" text="Nr. incidents" />
+                                            </columns>
+                                          </TableView>
+                                       </center>
+                                       <top>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneProblemHistory" prefHeight="100.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <ComboBox fx:id="comboifpbhistory" layoutX="170.0" layoutY="6.0" onAction="#onIfPbHistory" prefHeight="32.0" prefWidth="201.0" />
+                                                <ComboBox fx:id="combolinepbhistory" layoutX="448.0" layoutY="6.0" onAction="#onLineHistory" prefHeight="32.0" prefWidth="308.0" />
+                                                <ComboBox fx:id="combomachinepbhistory" layoutX="868.0" layoutY="6.0" onAction="#onMachineHistory" prefHeight="32.0" prefWidth="566.0" AnchorPane.leftAnchor="868.0" AnchorPane.rightAnchor="26.0" />
+                                                <ComboBox fx:id="responsablecombo" layoutX="170.0" layoutY="49.0" onAction="#onResponsable" prefHeight="32.0" prefWidth="267.0" />
+                                                <TextField fx:id="keywordspbhistory" layoutX="448.0" layoutY="45.0" prefHeight="31.0" prefWidth="308.0" promptText="key words">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                </TextField>
+                                                <Button fx:id="searchbtnprbhistory" layoutX="1179.0" layoutY="49.0" mnemonicParsing="false" onAction="#onSearchPbHistory" prefHeight="31.0" prefWidth="255.0" text="Search" AnchorPane.rightAnchor="26.0" />
+                                                <Text layoutX="30.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Responsable">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text layoutX="30.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text layoutX="393.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text layoutX="768.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <ImageView fx:id="searchiconprbhistory" fitHeight="23.0" fitWidth="21.0" layoutX="1262.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/searchicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </top>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneProblemHistory" prefHeight="70.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="editbtnproblemhistory" layoutX="30.0" layoutY="19.0" mnemonicParsing="false" onAction="#editProblemHistory" prefHeight="31.0" prefWidth="165.0" text="Edit" />
+                                                <Button fx:id="deletebtn_problem_history" layoutX="210.0" layoutY="19.0" mnemonicParsing="false" onAction="#deleteProblemHistory" prefHeight="31.0" prefWidth="165.0" text="Delete" />
+                                                <ImageView fx:id="pbh_editimage" fitHeight="22.0" fitWidth="19.0" layoutX="72.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="pbhistory_deleteicon" fitHeight="21.0" fitWidth="21.0" layoutX="253.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                            </Tab>
+                            <Tab fx:id="tabincidentshistory" onSelectionChanged="#onIncidentHistory" text="Incident History">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_incident_history" onMouseClicked="#onIncidentHistoryTable" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                            <columns>
+                                                <TableColumn fx:id="col_ih_start_date" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="137.99996948242188" text="Start date" />
+                                                <TableColumn fx:id="col_ih_enddate" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="124.00003051757812" text="End date" />
+                                                <TableColumn fx:id="col_ih_status" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="61.0" text="Status" />
+                                                <TableColumn fx:id="col_ih_sap" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="117.0" text="SAP Order" />
+                                                <TableColumn fx:id="col_ih_solcreator" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="132.0" text="Solution creator" />
+                                                <TableColumn fx:id="col_ih_solescal" maxWidth="1.7976931348623157E308" minWidth="100.0" prefWidth="134.39996337890625" text="Solution escalation" />
+                                                <TableColumn fx:id="col_ih_user" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="109.5999755859375" text="Username" />
+                                                <TableColumn fx:id="col_ih_engineer" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="100.0" text="Engineer" />
+                                                <TableColumn fx:id="col_ih_spare" maxWidth="1.7976931348623157E308" minWidth="50.0" prefWidth="108.7999267578125" text="Spare parts" />
+                                                <TableColumn fx:id="col_ih_sh_sol" maxWidth="1.7976931348623157E308" minWidth="150.0" prefWidth="227.199951171875" text="Short incident description" />
+												<TableColumn fx:id="col_ih_file" minWidth="50.0" prefWidth="99.199951171875" text="File" />
+                                            </columns>
+                                          </TableView>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneIncidentHistory" prefHeight="70.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="editbtn_incident" layoutX="21.0" layoutY="19.0" mnemonicParsing="false" onAction="#EditIncidentHistory" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="deletebtn_incident" layoutX="173.0" layoutY="19.0" mnemonicParsing="false" onAction="#DeleteIncidentHistory" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="editiconincident" fitHeight="23.0" fitWidth="21.0" layoutX="58.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconincident" fitHeight="23.0" fitWidth="21.0" layoutX="203.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                            </Tab>
+                              <Tab fx:id="tabif" onSelectionChanged="#search_if_structure" text="IF Structure">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_if_structure" onMouseClicked="#getSelectedIfStruct" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_if" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="440.0000305175781" text="Name" />
+                                                <TableColumn fx:id="col_desc_if" maxWidth="1.7976931348623157E308" minWidth="300.0" prefWidth="386.0" text="Description" />
+                                                <TableColumn fx:id="col_cc_if" maxWidth="1.7976931348623157E308" minWidth="500.0" prefWidth="825.199951171875" text="Cost center" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneIfStructure" prefHeight="67.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="add_btn_if_struct" layoutX="14.0" layoutY="18.0" mnemonicParsing="false" onAction="#add_if_structure" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                                <Button fx:id="edit_btn_if_struct" layoutX="171.0" layoutY="18.0" mnemonicParsing="false" onAction="#edit_if_structure" prefHeight="31.0" prefWidth="142.0" text="Edit" textAlignment="RIGHT" />
+                                                <Button fx:id="deletebtnif" layoutX="325.0" layoutY="18.0" mnemonicParsing="false" onAction="#delete_if_structure" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="editiconif" fitHeight="23.0" fitWidth="21.0" layoutX="209.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconif" fitHeight="23.0" fitWidth="21.0" layoutX="358.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="addiconif" fitHeight="23.0" fitWidth="21.0" layoutX="48.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/addicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="tabLine" onSelectionChanged="#search_line_structure" text="Line Structure">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_line_structure" onMouseClicked="#getSelectedLineStruct" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_line" maxWidth="1.7976931348623157E308" minWidth="400.0" prefWidth="535.9999603033066" text="Name" />
+                                                <TableColumn fx:id="col_desc_line" minWidth="500.0" prefWidth="712.0" text="Functional location" />
+                                                <TableColumn fx:id="col_cc_line" maxWidth="1.7976931348623157E308" minWidth="500.0" prefWidth="429.4000244140625" text="Cost center" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <top>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneLineStructure" prefHeight="50.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Text layoutX="25.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <ComboBox fx:id="comboiflinestruct" layoutX="53.0" layoutY="9.0" onAction="#onActionCombo" prefHeight="32.0" prefWidth="242.0" />
+                                             </children>
+                                          </AnchorPane>
+                                       </top>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneLineStructure" prefHeight="86.0" prefWidth="1618.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="addbtn_line" layoutX="27.0" layoutY="13.0" mnemonicParsing="false" onAction="#addLine" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                                <Button fx:id="editbtn_line" layoutX="177.0" layoutY="13.0" mnemonicParsing="false" onAction="#editLine" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="deletebtn_line" layoutX="333.0" layoutY="13.0" mnemonicParsing="false" onAction="#deleteLine" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="editiconline" fitHeight="23.0" fitWidth="21.0" layoutX="215.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="addiconline" fitHeight="23.0" fitWidth="21.0" layoutX="65.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/addicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconline" fitHeight="23.0" fitWidth="21.0" layoutX="366.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="tabMachine" onSelectionChanged="#onSelectMachineTab" text="Machine Structure">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_machine_structure" onMouseClicked="#getSelectedMachineStruct" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_machine" prefWidth="641.0" text="Name" />
+                                                <TableColumn fx:id="col_invnr_machine" prefWidth="667.0" text="Machine Inventory Number" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <top>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneMachineStructure" prefHeight="88.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Text layoutX="14.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <ComboBox fx:id="comboif" layoutX="44.0" layoutY="5.0" onAction="#actionComboIFMachine" prefHeight="32.0" prefWidth="242.0" />
+                                                <ComboBox fx:id="comboline" layoutX="354.0" layoutY="5.0" onAction="#onActionComboLine" prefHeight="32.0" prefWidth="313.0" />
+                                                <Text layoutX="299.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                </Text>
+                                                <TextField fx:id="search_field_machine_structure" layoutX="15.0" layoutY="42.0" prefHeight="31.0" prefWidth="654.0" promptText="key words">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></TextField>
+                                                <Button fx:id="search_button_machine" layoutX="679.0" layoutY="46.0" mnemonicParsing="false" onAction="#view_machines" prefHeight="31.0" prefWidth="292.0" text="Search" />
+                                                <ImageView fx:id="machinestructsearchicon" fitHeight="23.0" fitWidth="35.0" layoutX="778.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/searchicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </top>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneMachineStructure" prefHeight="82.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="addbtn_machine" layoutX="10.0" layoutY="25.0" mnemonicParsing="false" onAction="#addMachine" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                                <Button fx:id="editbtnmachine" layoutX="164.0" layoutY="25.0" mnemonicParsing="false" onAction="#editMachine" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="deletemachine" layoutX="325.0" layoutY="25.0" mnemonicParsing="false" onAction="#deleteMachine" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="addiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="45.0" layoutY="31.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/addicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="editiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="202.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconmachine" fitHeight="23.0" fitWidth="21.0" layoutX="356.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children></AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="tabTech" onSelectionChanged="#search_team" text="Technicians">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_shift_team" onMouseClicked="#getSelected" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="colu_numeteh_shifteam" prefWidth="344.0" text="Technician Name" />
+                                                <TableColumn fx:id="col_job_desc" prefWidth="362.0" text="Job description" />
+                                                <TableColumn fx:id="col_shift_username" prefWidth="278.0" text="Username" />
+                                                <TableColumn fx:id="col_email_shift_team" prefWidth="330.0" text="Email" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneTechnicians" prefHeight="71.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="add_button_shiftteam" layoutX="14.0" layoutY="19.0" mnemonicParsing="false" onAction="#add_shteam" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                                <Button fx:id="edit_btn_shiftteam" layoutX="175.0" layoutY="19.0" mnemonicParsing="false" onAction="#Edit" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="del_btnshiftteam" layoutX="329.0" layoutY="19.0" mnemonicParsing="false" onAction="#Delete" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="addicontech" fitHeight="23.0" fitWidth="21.0" layoutX="50.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/addicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="editicontech" fitHeight="23.0" fitWidth="21.0" layoutX="215.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteicontech" fitHeight="23.0" fitWidth="21.0" layoutX="356.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="tabEscalation" onSelectionChanged="#view_escalation_team" text="Engineers">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_escalation_team" onMouseClicked="#getSelectedEscTeam" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_escalation_team" prefWidth="403.0" text="Engineer Name" />
+                                                <TableColumn fx:id="col_job_escalation_team" prefWidth="328.0" text="Job description" />
+                                                <TableColumn fx:id="col_user_escalation_team" prefWidth="272.0" text="Username" />
+                                                <TableColumn fx:id="col_email_escalation_team" prefWidth="301.0" text="Email" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneEngineers" prefHeight="77.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="add_btn_escalation_team" layoutX="21.0" layoutY="23.0" mnemonicParsing="false" onAction="#addEnginner" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                                <Button fx:id="edit_btn_escalation_team" layoutX="175.0" layoutY="23.0" mnemonicParsing="false" onAction="#editEngineer" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="delete_btn_escalation_team" layoutX="333.0" layoutY="23.0" mnemonicParsing="false" onAction="#deleteEngineer" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="addiconesc" fitHeight="23.0" fitWidth="21.0" layoutX="55.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/addicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="editiconesc" fitHeight="23.0" fitWidth="21.0" layoutX="211.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconesc" fitHeight="23.0" fitWidth="21.0" layoutX="362.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content>
+                              </Tab>
+                              <Tab onSelectionChanged="#onSparePartsTab" text="Spare Parts">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_spare_parts" onMouseClicked="#getSelectedSpareParts" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="col_name_spare" prefWidth="194.99996948242188" text="Part Number" />
+                                                <TableColumn fx:id="col_spare_id" prefWidth="251.0" text="Spare ID" />
+                                                <TableColumn fx:id="col_des_spare" prefWidth="310.0" text="Description" />
+                                                <TableColumn fx:id="col_det_spare" prefWidth="548.0" text="Details" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneSpareParts" prefHeight="57.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="addbtnspare" layoutX="14.0" layoutY="13.0" mnemonicParsing="false" onAction="#AddSpParts" prefHeight="31.0" prefWidth="142.0" text="Add" />
+                                                <Button fx:id="editbtnspare" layoutX="171.0" layoutY="13.0" mnemonicParsing="false" onAction="#EditSpParts" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="deletebtnspare" layoutX="323.0" layoutY="12.0" mnemonicParsing="false" onAction="#DeleteSpParts" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="addiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="49.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/addicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="editiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="208.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="357.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                       <top>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneSpareParts" prefHeight="52.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <TextField fx:id="searchfield_spare_parts" layoutX="14.0" layoutY="6.0" prefHeight="31.0" prefWidth="430.0" promptText="key words">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font></TextField>
+                                                <Button fx:id="searchbtnspare" layoutX="458.0" layoutY="12.0" mnemonicParsing="false" onAction="#search_key_words_spare_parts" prefHeight="31.0" prefWidth="163.0" text="Search" />
+                                                <Button fx:id="loadbtn" layoutX="1211.0" layoutY="12.0" mnemonicParsing="false" onAction="#view_spare_parts" prefHeight="31.0" prefWidth="223.0" text="Load all data" AnchorPane.rightAnchor="25.80000000000001" />
+                                                <ImageView fx:id="searchiconspare" fitHeight="23.0" fitWidth="21.0" layoutX="495.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/searchicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                              </Tab>
+                              <Tab fx:id="tabAccess" onSelectionChanged="#view_acces" text="Access">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <center>
+                                          <TableView fx:id="table_access" onMouseClicked="#getSelectedAccess" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                                             <columns>
+                                                <TableColumn fx:id="col_user_access" prefWidth="653.9999694824219" text="Username" />
+                                                <TableColumn fx:id="col_role_access" prefWidth="657.0" text="Role" />
+                                             </columns>
+                                          </TableView>
+                                       </center>
+                                       <bottom>
+                                          <AnchorPane onMouseClicked="#onAnchorPaneAccess" prefHeight="61.0" prefWidth="1266.0" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <Button fx:id="editbtnacces" layoutX="14.0" layoutY="15.0" mnemonicParsing="false" onAction="#editAccess" prefHeight="31.0" prefWidth="142.0" text="Edit" />
+                                                <Button fx:id="deletebtnaccess" layoutX="164.0" layoutY="15.0" mnemonicParsing="false" onAction="#deleteAccess" prefHeight="31.0" prefWidth="142.0" text="Delete" />
+                                                <ImageView fx:id="editiconacces" fitHeight="23.0" fitWidth="21.0" layoutX="52.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/editicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fx:id="deleteiconaccess" fitHeight="23.0" fitWidth="21.0" layoutX="194.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/removeicon.png" />
+                                                   </image>
+                                                </ImageView>
+                                             </children>
+                                          </AnchorPane>
+                                       </bottom>
+                                    </BorderPane>
+                                 </content></Tab>
+                          </tabs>
+                        </TabPane>
+                     </center>
+                  </BorderPane>
+               </content>
+          </Tab>
+            <Tab fx:id="esctab" onSelectionChanged="#onEscalation" text="ESCALATION">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="ticket_incident" layoutX="15.0" layoutY="7.0" prefHeight="30.0" prefWidth="403.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <TextField fx:id="if_escalation" editable="false" layoutX="41.0" layoutY="55.0" prefHeight="37.0" prefWidth="259.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="if_text" layoutX="15.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="line_escalation" editable="false" layoutX="380.0" layoutY="55.0" prefHeight="37.0" prefWidth="321.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="line_text" layoutX="318.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="machine_escalation" editable="false" layoutX="840.0" layoutY="55.0" prefHeight="37.0" prefWidth="454.0" AnchorPane.leftAnchor="868.0000000000001" AnchorPane.rightAnchor="40.000000000000114">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="machine_text" layoutX="731.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="sd_text" layoutX="15.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start Date">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="start_date_escalation" editable="false" layoutX="126.0" layoutY="103.0" prefHeight="25.0" prefWidth="181.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="ed_text" layoutX="313.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End Date">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="end_date_escalation" editable="false" layoutX="414.0" layoutY="103.0" prefHeight="25.0" prefWidth="181.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="status_text" layoutX="603.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Status">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="status_escalation" editable="false" layoutX="673.0" layoutY="103.0" prefHeight="30.0" prefWidth="142.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="creator_user_text" layoutX="821.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Creator name">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="creator_user_escalation" editable="false" layoutX="969.0" layoutY="103.0" prefHeight="38.0" prefWidth="282.0" AnchorPane.leftAnchor="1040.0" AnchorPane.rightAnchor="40.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text layoutX="558.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <Text fx:id="sap_text" layoutX="15.0" layoutY="194.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAP Order">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="saporder_escalation" editable="false" layoutX="142.0" layoutY="166.0" prefHeight="25.0" prefWidth="165.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="escal_user_text" layoutX="318.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escalation name">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="escalation_user" editable="false" layoutX="494.0" layoutY="166.0" prefHeight="37.0" prefWidth="324.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="pbdesc_text" layoutX="15.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Problem description">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="pbdesc_escalation" editable="false" layoutX="15.0" layoutY="247.0" prefHeight="182.0" prefWidth="318.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <Text fx:id="hmi_text" layoutX="823.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HMI/Error Message">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="hmi_pbescalation" editable="false" layoutX="1041.0" layoutY="166.0" prefHeight="38.0" prefWidth="281.0" AnchorPane.leftAnchor="1041.0" AnchorPane.rightAnchor="40.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextField>
+                        <Text fx:id="part_numbere_text" layoutX="351.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Part number spare parts">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="part_number_escalation" editable="false" layoutX="353.0" layoutY="247.0" prefHeight="182.0" prefWidth="302.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <Text fx:id="sol_creator_text" layoutX="702.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution creator">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="sol_creator_escalation" editable="false" layoutX="673.0" layoutY="247.0" prefHeight="179.0" prefWidth="622.0" AnchorPane.leftAnchor="701.0000000000001" AnchorPane.rightAnchor="39.000000000000114">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <Text fx:id="sol_escal_text" layoutX="12.0" layoutY="456.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Solution escalation">
+                           <font>
+                              <Font size="24.0" />
+                           </font>
+                        </Text>
+                        <TextArea fx:id="sol_escalation" layoutX="15.0" layoutY="463.0" prefHeight="123.0" prefWidth="1308.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="39.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TextArea>
+                        <Button fx:id="savebtn_escalation" layoutX="930.0" layoutY="595.0" mnemonicParsing="false" onAction="#saveEscalation" prefHeight="30.0" prefWidth="219.0" text="Save" AnchorPane.rightAnchor="310.79999999999995">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <ImageView fx:id="saveicon_escalation" fitHeight="23.0" fitWidth="21.0" layoutX="997.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/saveicon.png" />
+                           </image>
+                        </ImageView>
+                        <Button fx:id="show_btn" layoutX="432.0" layoutY="12.0" mnemonicParsing="false" onAction="#onShowIncidentDetailsEscal" prefHeight="30.0" prefWidth="219.0" text="Show incident details">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <Button fx:id="cancelbtn_escalation" layoutX="1201.0" layoutY="595.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="30.0" prefWidth="219.0" text="Cancel" AnchorPane.rightAnchor="39.799999999999955">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                        <ImageView fx:id="cancelicon_escalation" fitHeight="23.0" fitWidth="21.0" layoutX="1265.0" layoutY="600.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/cancelicon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+			<Tab fx:id="reportstab" onSelectionChanged="#onReports" text="REPORTS">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                              <Text fx:id="textfieldChooseReport" layoutX="16.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choose a report:" wrappingWidth="210.13671875">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Group layoutX="182.0" layoutY="8.0">
+                                 <children>
+                                    <JFXCheckBox fx:id="checkboxmtbf" checkedColor="#ebd313" layoutX="29.0" layoutY="43.0" onAction="#checkMTBF" prefHeight="18.0" prefWidth="141.0" text=" Mean time between failures (MTBF)">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="checkboxincover" checkedColor="#ebd313" layoutX="29.0" layoutY="72.0" onAction="#checkIncOver" prefHeight="18.0" prefWidth="141.0" text=" Incidents overview">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="checkspareover" checkedColor="#ebd313" layoutX="29.0" layoutY="104.0" onAction="#checkSpareparts" prefHeight="32.0" prefWidth="236.0" text=" Spare parts overview">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="checkescalover" checkedColor="#ebd313" layoutX="29.0" layoutY="136.0" onAction="#checkEscOver" prefHeight="29.0" prefWidth="141.0" text=" Escalation overview">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                    <JFXCheckBox fx:id="checkboxmttr" checkedColor="#ebd313" layoutX="29.0" layoutY="9.0" onAction="#checkMTTR" prefHeight="18.0" prefWidth="141.0" text=" Mean time to recovery (MTTR)">
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
+                                    </JFXCheckBox>
+                                 </children>
+                              </Group>
+                              <DatePicker fx:id="datepickerstartreports" layoutX="132.0" layoutY="249.0" prefHeight="32.0" prefWidth="238.0" />
+                              <DatePicker fx:id="datepickerendreports" layoutX="525.0" layoutY="249.0" prefHeight="32.0" prefWidth="266.0" />
+                              <Text fx:id="startdatetextfieldreports" layoutX="13.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Start date:">
+                                 <font>
+                                   <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="enddatetextfieldreports" layoutX="414.0" layoutY="274.0" strokeType="OUTSIDE" strokeWidth="0.0" text="End date:">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="comboifreports" layoutX="49.0" layoutY="185.0" onAction="#onIFRaport" prefHeight="32.0" prefWidth="323.0" />
+                              <ComboBox fx:id="combolinereports" layoutX="468.0" layoutY="184.0" onAction="#onLineReport" prefHeight="32.0" prefWidth="323.0" />
+                              <ComboBox fx:id="combomachinereports" layoutX="941.0" layoutY="185.0" onAction="#onMachineReport" prefHeight="32.0" prefWidth="323.0" />
+                              <Text fx:id="iftextreports" layoutX="13.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="linetextreports" layoutX="414.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Line">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="machinetextreports" layoutX="832.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Machine">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Text fx:id="topreports" layoutX="13.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Top:" wrappingWidth="60.3125">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+
+                              <Group fx:id="grouptop" layoutX="64.0" layoutY="314.0">
+                                 <children>
+                                    <RadioButton fx:id="firstoptiontopreports" mnemonicParsing="false" text="3">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="topbtnradio" />
+                                       </toggleGroup>
+
+                                    </RadioButton>
+                                    <RadioButton fx:id="secondoptiontopreports" layoutY="23.0" mnemonicParsing="false" text="5" toggleGroup="$topbtnradio">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="thirdoptiontopreports" layoutY="48.0" mnemonicParsing="false" text="10" toggleGroup="$topbtnradio">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <RadioButton fx:id="alloptiontopreports" layoutY="72.0" mnemonicParsing="false" text="All" toggleGroup="$topbtnradio">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+
+                              </Group>
+                              <Group fx:id="detbtnrad1" layoutX="262.0" layoutY="314.0">
+                                 <children>
+                                    <RadioButton fx:id="yesoptiondetailsreports" mnemonicParsing="false" prefHeight="19.0" prefWidth="44.0" text="Yes">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="detbtnrad" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                   <RadioButton fx:id="nooptiondetailsreports" layoutY="19.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="51.0" text="No" toggleGroup="$detbtnrad">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </RadioButton>
+                                 </children>
+                              </Group>
+                              <Text fx:id="detailsreports" layoutX="177.0" layoutY="331.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Details:">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="comboescuserreports" layoutX="998.0" layoutY="248.0" onAction="#onEscUser" prefHeight="32.0" prefWidth="267.0" />
+                              <Text fx:id="escalusertextreports" layoutX="832.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Escalation user">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <Button fx:id="button_generate_reports" layoutX="16.0" layoutY="418.0" mnemonicParsing="false" onAction="#onGenerateReport" prefHeight="38.0" prefWidth="342.0" text="Generate report" />
+                              <ImageView fx:id="star1" fitHeight="14.0" fitWidth="12.0" layoutX="7.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true">
+                                <image>
+                                    <Image url="@../images/stea.png" />
+                                 </image>
+
+                              </ImageView>
+                              <ImageView fx:id="star2" fitHeight="13.0" fitWidth="13.0" layoutX="407.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/stea.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabDiagram" onSelectionChanged="#onDiagramView" text="DIAGRAM VIEW">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <AnchorPane prefHeight="70.0" prefWidth="1460.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <Text layoutX="14.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="IF">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Text>
+                              <ComboBox fx:id="comboifd" layoutX="49.0" layoutY="13.0" onAction="#onComboIfD" prefHeight="26.0" prefWidth="220.0" />
+                           </children>
+                        </AnchorPane>
+                     </top>
+                     <center>
+                        <AreaChart fx:id="areachart" prefHeight="518.0" prefWidth="1460.0" BorderPane.alignment="CENTER">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </AreaChart>
+                     </center>
+                  </BorderPane>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </center>
+   <bottom>
+      <BorderPane onMouseClicked="#onAnchorPaneOverview" prefHeight="83.0" prefWidth="1460.0" BorderPane.alignment="CENTER">
+         <right>
+            <Line endX="100.0" startX="-116.83778381347656" startY="0.4142189025878906" stroke="#170984" strokeWidth="2.0" BorderPane.alignment="CENTER" />
+         </right>
+         <left>
+            <Line endX="1014.4928588867188" endY="3.434419704717584E-5" startX="-100.0" stroke="#170984" strokeWidth="2.0" BorderPane.alignment="CENTER" />
+         </left>
+         <center>
+            <ImageView fitHeight="70.0" fitWidth="136.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../images/1200px-Hella_logo.svg.png" />
+               </image>
+            </ImageView>
+         </center>
+      </BorderPane>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane fx:id="scrollpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="690.0" prefWidth="1228.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.IncidentOverviewController">
+  <content>
+    <AnchorPane minHeight="0.0" minWidth="0.0" onMouseClicked="#onAnchorOverview" prefHeight="680.0" prefWidth="1221.0">
+         <children>
+            <TableView fx:id="table_incidents_overview" layoutY="-1.0" onMouseClicked="#onSelectIncident" prefHeight="577.0" prefWidth="1228.0">
+              <columns>
+                <TableColumn fx:id="col_status" prefWidth="185.0" text="Status" />
+                  <TableColumn fx:id="col_short" prefWidth="237.0" text="Short incident description" />
+                  <TableColumn fx:id="col_start_date" prefWidth="230.0" text="Start Date" />
+                  <TableColumn fx:id="col_end_date" prefWidth="229.0" text="End Date" />
+                  <TableColumn fx:id="col_sap" prefWidth="180.0" text="SAP Order" />
+                  <TableColumn fx:id="col_escalation" prefWidth="166.0" text="Escalation" />
+              </columns>
+            </TableView>
+            <Button fx:id="btnincidentdetails" layoutX="931.0" layoutY="595.0" mnemonicParsing="false" onAction="#openincidentsdetails" prefHeight="31.0" prefWidth="224.0" text="Incidents details" />
+         </children></AnchorPane>
+  </content>
+</ScrollPane>
